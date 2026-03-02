@@ -1,6 +1,6 @@
 site_name: FishBubble 鱼缸生态模拟系统
 site_description: 高级生态鱼缸数字模拟沙盒
-site_author: 作者
+site_author: JJZ
 
 theme:
   name: readthedocs
