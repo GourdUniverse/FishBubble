@@ -118,17 +118,47 @@
         }
         input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.2); }
         
+        /* 防止移动端横向溢出 */
+        html, body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         /* 崩溃弹窗提醒 */
         .alert {
-            position: absolute; top: 25px; right: 25px;
-            background: rgba(220, 38, 38, 0.95); backdrop-filter: blur(8px);
-            color: white; padding: 18px 30px; border-radius: 10px;
+            position: fixed; /* 由 absolute 改为 fixed，避免参与页面布局 */
+            top: max(12px, env(safe-area-inset-top));
+            right: max(12px, env(safe-area-inset-right));
+            width: min(92vw, 420px); /* 限制移动端宽度 */
+            box-sizing: border-box;
+            word-break: break-word;
+            background: rgba(220, 38, 38, 0.95);
+            backdrop-filter: blur(8px);
+            color: white;
+            padding: 18px 30px;
+            border-radius: 10px;
             box-shadow: 0 10px 30px rgba(220, 38, 38, 0.6);
-            transform: translateX(120%);
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); /* Bounce effect */
-            z-index: 50; border-left: 6px solid #b91c1c;
+            transform: translateX(calc(100% + 24px)); /* 彻底移出视口 */
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 50;
+            border-left: 6px solid #b91c1c;
         }
         .alert.show { transform: translateX(0); }
+
+        @media (max-width: 640px) {
+            .alert {
+                padding: 12px 14px;
+                border-left-width: 4px;
+            }
+            .alert h4 {
+                font-size: 1rem;
+                margin-bottom: 0.25rem;
+            }
+            .alert p {
+                font-size: 0.75rem;
+                line-height: 1.25;
+            }
+        }
 
         /* 拖拽态响应缸体发光 */
         .tank-drag-over {
