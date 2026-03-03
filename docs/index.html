@@ -245,13 +245,13 @@
         </div>
 
         <!-- 一键最优配置（新加的核心功能） -->
-        <div class="relative p-5 rounded-xl overflow-hidden group">
-            <div class="absolute inset-0 bg-emerald-500 opacity-10 group-hover:opacity-20 transition-opacity duration-300"></div>
-            <div class="absolute inset-0 border border-emerald-400/30 rounded-xl"></div>
-            <button id="btnOptimal" class="btn btn-success w-full py-3 text-base lg:text-lg glow relative z-10">
-                <i class="fas fa-infinity text-lg lg:text-2xl"></i> 建立完美永动微型生物圈
+        <div class="relative p-4 sm:p-5 rounded-xl overflow-visible group">
+            <div class="absolute inset-0 bg-emerald-500 opacity-10 group-hover:opacity-20 transition-opacity duration-300 rounded-xl"></div>
+            <div class="absolute inset-0 border border-emerald-400/30 rounded-xl pointer-events-none"></div>
+            <button id="btnOptimal" class="btn btn-success w-full py-3 text-sm sm:text-base lg:text-lg glow relative z-10 whitespace-normal h-auto leading-snug">
+                <i class="fas fa-infinity text-lg lg:text-2xl shrink-0"></i> <span>建立完美永动微型生物圈</span>
             </button>
-            <p class="text-sm text-emerald-200/70 mt-3 text-center leading-relaxed relative z-10 font-medium">
+            <p class="text-xs sm:text-sm text-emerald-200/70 mt-2 sm:mt-3 text-center leading-relaxed relative z-10 font-medium hidden sm:block">
                 系统通过梯度下降法求导解出的严格正平衡稳态<br>一键达成零干预、自给自足的光景。
             </p>
         </div>
@@ -378,9 +378,9 @@
         </div>
 
         <!-- 核心物理区：生态受体缸 & 生物库 -->
-        <div class="flex flex-col md:flex-row h-auto md:h-[400px] xl:h-[38vh] xl:min-h-[350px] gap-3 shrink-0 w-full xl:w-[85%] relative z-20">
+        <div class="flex flex-col lg:flex-row h-auto lg:h-[400px] xl:h-[38vh] xl:min-h-[350px] gap-3 shrink-0 w-full relative z-20">
             <!-- 核心视觉生态缸 (投放区) -->
-            <div id="visualTank" class="flex-1 glass-panel relative overflow-hidden flex items-center justify-center transition-all duration-300 min-h-[300px] md:min-h-0" ondragover="allowDrop(event)" ondragleave="handleLeave(event)" ondrop="handleDrop(event)">
+            <div id="visualTank" class="flex-1 glass-panel relative overflow-hidden flex items-center justify-center transition-all duration-300 min-h-[280px] lg:min-h-0" ondragover="allowDrop(event)" ondragleave="handleLeave(event)" ondrop="handleDrop(event)">
                 <!-- 水体背景点缀 -->
                 <div class="absolute inset-0 bg-gradient-to-b from-cyan-900/10 to-blue-900/40 pointer-events-none"></div>
                 <div class="absolute inset-x-0 bottom-0 h-4 bg-gradient-to-t from-yellow-900/40 to-transparent pointer-events-none"></div>
@@ -388,56 +388,56 @@
             </div>
 
             <!-- 生物库 (拖拽功能) -->
-            <div class="glass-panel w-full md:w-56 lg:w-64 flex flex-col p-3 overflow-y-auto shrink-0 transition-all max-h-[300px] md:max-h-none">
+            <div class="glass-panel w-full lg:w-auto lg:min-w-[420px] xl:min-w-[480px] flex flex-col p-3 shrink-0 transition-all">
                 <h3 class="text-base text-slate-300 mb-3 font-bold tracking-wider border-b border-slate-700/50 pb-2"><i class="fas fa-dna text-slate-400 mr-2"></i> 生物库</h3>
-                <div class="space-y-2">
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">🐡</div>
-                        <div class="flex-1 text-sm text-orange-200 font-bold whitespace-nowrap">金鱼</div>
-                        <input type="number" id="dragAmtF" value="5" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-orange-500/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">条</span>
+                <div class="grid grid-cols-2 xl:grid-cols-3 gap-2 auto-rows-min">
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">🐡</div>
+                        <div class="flex-1 text-xs text-orange-200 font-bold whitespace-nowrap">金鱼</div>
+                        <input type="number" id="dragAmtF" value="5" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-orange-500/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">条</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_zebra')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">🐟</div>
-                        <div class="flex-1 text-sm text-slate-200 font-bold whitespace-nowrap">斑马鱼</div>
-                        <input type="number" id="dragAmtF_zebra" value="5" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-slate-400/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">条</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_zebra')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(255,255,255,0.6)]">🐟</div>
+                        <div class="flex-1 text-xs text-slate-200 font-bold whitespace-nowrap">斑马鱼</div>
+                        <input type="number" id="dragAmtF_zebra" value="5" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-slate-400/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">条</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_guppy')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">🐠</div>
-                        <div class="flex-1 text-sm text-pink-200 font-bold whitespace-nowrap">孔雀鱼</div>
-                        <input type="number" id="dragAmtF_guppy" value="5" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-pink-500/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">条</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_guppy')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(236,72,153,0.8)]">🐠</div>
+                        <div class="flex-1 text-xs text-pink-200 font-bold whitespace-nowrap">孔雀鱼</div>
+                        <input type="number" id="dragAmtF_guppy" value="5" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-pink-500/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">条</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_shrimp')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">🦐</div>
-                        <div class="flex-1 text-sm text-orange-300 font-bold whitespace-nowrap">小虾</div>
-                        <input type="number" id="dragAmtF_shrimp" value="5" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-orange-400/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">只</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_shrimp')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(251,146,60,0.8)]">🦐</div>
+                        <div class="flex-1 text-xs text-orange-300 font-bold whitespace-nowrap">小虾</div>
+                        <input type="number" id="dragAmtF_shrimp" value="5" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-orange-400/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">只</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_snail')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(168,162,158,0.8)]">🐌</div>
-                        <div class="flex-1 text-sm text-stone-300 font-bold whitespace-nowrap">田螺</div>
-                        <input type="number" id="dragAmtF_snail" value="5" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-stone-400/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">只</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'F_snail')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(168,162,158,0.8)]">🐌</div>
+                        <div class="flex-1 text-xs text-stone-300 font-bold whitespace-nowrap">田螺</div>
+                        <input type="number" id="dragAmtF_snail" value="5" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-stone-400/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">只</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors mt-2" draggable="true" ondragstart="handleStart(event, 'A')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]">🌿</div>
-                        <div class="flex-1 text-sm text-green-200 font-bold whitespace-nowrap">金鱼藻</div>
-                        <input type="number" id="dragAmtA" value="10" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-green-500/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">株</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'A')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(74,222,128,0.8)]">🌿</div>
+                        <div class="flex-1 text-xs text-green-200 font-bold whitespace-nowrap">金鱼藻</div>
+                        <input type="number" id="dragAmtA" value="10" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-green-500/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">株</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'A_black')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🪴</div>
-                        <div class="flex-1 text-sm text-emerald-200 font-bold whitespace-nowrap">黑藻</div>
-                        <input type="number" id="dragAmtA_black" value="10" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-emerald-500/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">株</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'A_black')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]">🪴</div>
+                        <div class="flex-1 text-xs text-emerald-200 font-bold whitespace-nowrap">黑藻</div>
+                        <input type="number" id="dragAmtA_black" value="10" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-emerald-500/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">株</span>
                     </div>
-                    <div class="flex items-center gap-2 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors mt-2" draggable="true" ondragstart="handleStart(event, 'B')" ondragend="handleEnd(event)">
-                        <div class="text-xl w-7 text-center drop-shadow-[0_0_8px_rgba(244,114,182,0.8)]">🦠</div>
-                        <div class="flex-1 text-sm text-pink-200 font-bold whitespace-nowrap">细菌</div>
-                        <input type="number" id="dragAmtB" value="10" min="1" max="100" class="w-14 bg-black/50 text-white px-1 py-0.5 rounded border border-pink-500/50 text-center text-sm outline-none" onclick="event.stopPropagation()">
-                        <span class="text-xs text-slate-400 w-4">簇</span>
+                    <div class="flex items-center gap-1.5 p-1.5 bg-slate-800/60 rounded cursor-grab active:cursor-grabbing border border-slate-600/30 hover:bg-slate-700/80 transition-colors" draggable="true" ondragstart="handleStart(event, 'B')" ondragend="handleEnd(event)">
+                        <div class="text-lg w-6 text-center drop-shadow-[0_0_8px_rgba(244,114,182,0.8)]">🦠</div>
+                        <div class="flex-1 text-xs text-pink-200 font-bold whitespace-nowrap">细菌</div>
+                        <input type="number" id="dragAmtB" value="10" min="1" max="100" class="w-12 bg-black/50 text-white px-1 py-0.5 rounded border border-pink-500/50 text-center text-xs outline-none" onclick="event.stopPropagation()">
+                        <span class="text-xs text-slate-400">簇</span>
                     </div>
                 </div>
             </div>
@@ -976,7 +976,9 @@
                 // 数量下降时销毁节点
                 while(currentVisualCount > targetCount && currentVisualCount > 0) {
                     let el = particlesCache[key].pop();
-                    DOM.tank.removeChild(el);
+                    if(el && el.parentNode) {
+                        el.parentNode.removeChild(el);
+                    }
                     currentVisualCount--;
                 }
             }
